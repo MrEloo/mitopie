@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+
+{% block main %}
+	<main class="mon_profil">
+		<h1>Mes informations</h1>
+
+		<p>
+			NOM :
+			{{user.nom}}
+		</p>
+		<p>
+			PRENOM :
+			{{user.prenom}}
+		</p>
+		<p>
+			TELEPHONE :
+			{{user.telephone}}
+		</p>
+		<p>
+			EMAIL :
+			{{user.email}}
+		</p>
+		<p>
+			ADRESSE :
+			{{user.adresse}}
+			{{user.code_postal}},
+			{{user.ville}}
+		</p>%
+
+	</main>
+{% endblock %}

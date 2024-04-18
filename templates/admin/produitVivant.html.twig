@@ -1,0 +1,81 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+	<main>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-3">
+					<a href="index.php?route=admin" class="btn btn-secondary">Retour</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<a href="index.php?route=ajouter_produitVivant" class="btn btn-success">Ajouter un produit</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<form action="index.php?route=filtre_produitsVivants" method="POST">
+						<div class="form-group">
+							<label for="categorie">Catégorie :</label>
+							<select id="categorie" name="categorie" class="form-control">
+								<option value="">Toutes les catégories</option>
+								{% for categorie in categories %}
+									<option value="{{categorie.id}}">{{categorie.nom}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary">Filtrer</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				{% if produits_filtrer is defined %}
+
+					{% for produit_filtrer in produits_filtrer %}
+						<div class="col-md-4 mb-4">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">{{ produit_filtrer.nom }}</h5>
+									<p class="card-text">Prix:
+										{{ produit_filtrer.prix }}€</p>
+									<p class="card-text">Quantité:
+										{{ produit_filtrer.quantite }}</p>
+									<p class="card-text">{{ produit.description }}</p>
+									<img src="{{ produit_filtrer.media }}" class="img-fluid" alt="{{ produit_filtrer.nom }}">
+									<div class="btn-group mt-3" role="group">
+										<a href="index.php?route=modifier_produitVivant&id={{ produit_filtrer.id }}" class="btn btn-primary">Modifier</a>
+										<a href="index.php?route=supprimer_produitVivant&id={{ produit_filtrer.id }}" class="btn btn-danger">Supprimer</a>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+
+					{% else %}
+						{% for produit in produits %}
+							<div class="col-md-4 mb-4">
+								<div class="card">
+									<div class="card-body">
+										<h5 class="card-title">{{ produit.nom }}</h5>
+										<p class="card-text">Prix:
+											{{ produit.prix }}€</p>
+										<p class="card-text">Quantité:
+											{{ produit.quantite }}</p>
+										<p class="card-text">{{ produit.description }}</p>
+										<img src="{{ produit.media }}" class="img-fluid" alt="{{ produit.nom }}">
+										<div class="btn-group mt-3" role="group">
+											<a href="index.php?route=modifier_produitVivant&id={{ produit.id }}" class="btn btn-primary">Modifier</a>
+											<a href="index.php?route=supprimer_produitVivant&id={{ produit.id }}" class="btn btn-danger">Supprimer</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					{% endif %}
+
+
+				</div>
+			</div>
+		</main>
+	{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 mb-3">
+				<a href="index.php?route=evenement" class="btn btn-secondary">Retour</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Modifier l'événement "{{ evenement.titre }}"</h5>
+						<form method="post" action="index.php?route=modifier_evenement_&id={{ evenement.id }}">
+							<div class="form-group">
+								<label for="titre">Titre de l'événement</label>
+								<input type="text" class="form-control" id="titre" name="titre" value="{{ evenement.titre }}">
+							</div>
+							<div class="form-group">
+								<label for="description">Description de l'événement</label>
+								<textarea class="form-control" id="description" name="description">{{ evenement.description }}</textarea>
+							</div>
+							<!-- Ajoutez ici d'autres champs que vous souhaitez modifier -->
+							<button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

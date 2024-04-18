@@ -1,0 +1,200 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+	<main class='modale_container'>
+		<section class="alaune">
+
+			<img class="background_image_carotte" src="assets/images/carotte.png" alt="">
+
+
+			<h1>Produit à la une</h1>
+			{% for evenement in evenements %}
+				<i class="fa-solid fa-star"></i>
+				<i class="fa-solid fa-star"></i>
+				<p>
+					{{evenement.description}}
+				</p>
+				<a class="button_alaune" href="index.php?route=contact&titre={{evenement.titre|url_encode}}">
+					En savoir plus
+				</a>
+				<br>
+				<i class="fa-solid fa-star"></i>
+				<i class="fa-solid fa-star"></i>
+			{% endfor %}
+
+
+		</section>
+
+
+		<section class="description_produit">
+			<h2>Quid de nos produits ?</h2>
+			<p>Tous nos produits sont
+				<span class="produit_bio">BIO</span>
+				et
+				<span class="produit_responsable">RESPONSABLE</span>
+			</p>
+			<form action="" id="filtre_form">
+				<label for="categorie"></label>
+				<select name="categorie" id="categorie">
+					<option value="" disabled selected>Choisir par catégorie</option>
+					<option value="tous">Tous nos produits</option>
+					{% for categorie in categories %}
+						{% if categorie.products %}
+							<option value="{{categorie.nom}}">{{categorie.nom}}</option>
+						{% endif %}
+					{% endfor %}
+
+				</select>
+				<button>filtrer</button>
+			</form>
+		</section>
+
+		<div class="overlay_modale_produits"></div>
+
+		{# //SLIDER POUR LES PRRODUITS DE LA FERME #}
+		{% for categorie in categories %}
+			{% if categorie.products %}
+
+				<section class="splide filtre" aria-label="Splide Basic HTML Example">
+					<h2 class="product_title">
+						{{ categorie.nom }}</h2>
+					<div class="splide__track">
+						<ul class="splide__list">
+							{% for product in categorie.products %}
+								<li class="splide__slide">
+									<div class="flex">
+										<img src="{{ product.media }}" alt="">
+										<button class="show_modale" data-show-modal="{{ product.id }}">Détails du produit</button>
+									</div>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</section>
+			{% endif %}
+		{% endfor %}
+
+		<section class="vie_animal">
+			<h2>La vie des animaux à la ferme</h2>
+			<p>Ici, tous nos animaux sont élevés dans de bonnes conditions de manière
+				<span class="important">bio</span>
+				et responsable. Nous croyons fermement en l'importance du
+				<span class="important">bien-être</span>
+				animal et de la durabilité. Nos animaux bénéficient d'un espace suffisant pour se déplacer librement, d'une alimentation saine et équilibrée, et de soins attentifs. Nous nous engageons à respecter les normes les plus strictes en matière de santé et de sécurité pour assurer le bien-être de nos animaux et la qualité de nos produits. En choisissant des pratiques agricoles
+				<span class="important">durables et respectueuses</span>
+				de l'environnement, nous contribuons également à préserver notre planète pour les générations futures.</p>
+		</section>
+
+		{# //SLIDER POUR LES ANIMEAUX VIVANTS #}
+		<section class="splide alive" aria-label="Splide Basic HTML Example">
+			<div class="splide__track alive">
+				<ul class="splide__list">
+					{% for categorie_animal in categories_animeaux %}
+						<li class="splide__slide">
+							<div class="flex">
+								<h2 class="animal_title">{{ categorie_animal.nom }}</h2>
+								<img class="reduce_image_size" src="{{ categorie_animal.media }}" alt="">
+								<button class="show_modale red" data-show-modal-alive="{{ categorie_animal.id }}">Disponibilités</button>
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</section>
+
+		{# MODALE POUR LES ANIMEAUX VIVANTS  #}
+		{% for categorie_animal in categories_animeaux %}
+			<div class="modale_alive" data-modal-id-alive="{{ categorie_animal.id }}">
+				<div class='modale_content '>
+					<span class="close" data-close-modal-alive="{{ categorie_animal.id }}">&times;</span>
+					{% if categorie_animal.products_alive %}
+						<section class="splide" aria-label="Splide Basic HTML Example">
+							<div class="splide__track">
+								<ul class="splide__list">
+									{% for product_alive in categorie_animal.products_alive %}
+										<li class="splide__slide">
+											<div class="flex">
+												<img src="{{product_alive.media}}" alt="">
+												<p>PRIX :
+													{{product_alive.prix}}</p>
+												<p>DESCRIPTION :
+													{{product_alive.nom}}</p>
+												<p>Disponibilités :
+													<span class='vert'>En stock</span>
+												</p>
+											</div>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+						</section>
+					{% else %}
+						<h3>Disponibilités
+							{{ categorie_animal.nom }}
+							:
+							<br>
+							<span class="rouge italic">aucun stock</span>
+
+						</h3>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+
+		{# MODALE POUR LES PRODUITS  #}
+		{% for categorie in categories %}
+			{% for product in categorie.products %}
+				<article>
+					<div class="modale" data-modal-id="{{ product.id }}">
+						<span class="close" data-close-modal="{{ product.id }}">&times;</span>
+						<div class="modale_content">
+							<div class="logo_modale">
+								{{ categorie.media|raw }}
+							</div>
+							<h2>{{ product.nom }}</h2>
+							<p>
+								<i class="fa-solid fa-angle-right"></i>
+								<span class="important">PRIX :
+								</span>
+								{{ product.prix }}</p>
+							{% if product.description %}
+								<p>
+									<i class="fa-solid fa-angle-right"></i>
+									<span class="important">DESCRIPTION :</span>
+									{{ product.description }}</p>
+							{% endif %}
+							<p>
+								<i class="fa-solid fa-angle-right"></i>Disponibilités :
+								<span class='vert'>En stock</span>
+							</p>
+
+						</div>
+					</div>
+				</article>
+			{% endfor %}
+		{% endfor %}
+	</article>
+</section>
+{# 
+
+<section class='where'>
+	<a href="index.php?route=distribution">
+		
+		<br>
+		Nous retrouver ?
+	</a>
+</section> #}
+
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+const splideElements = document.getElementsByClassName('splide');
+
+for (let i = 0; i < splideElements.length; i++) {
+new Splide(splideElements[i]).mount();
+
+
+}
+});
+</script>
+{{parent()}}</main>{% endblock %}

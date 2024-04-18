@@ -1,0 +1,51 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+	<main>
+		<form class='register_form' action="index.php?route=check-register" method="POST">
+			<h2>Connexion</h2>
+			<input type="hidden" name="csrf_token" id="csrf_token" value="{{ session.csrf_token }}"/>
+			<fieldset>
+				<label for="nom">Nom :</label>
+				<input type="text" id="nom" name="nom" placeholder="Entrez votre nom">
+			</fieldset>
+			<fieldset>
+				<label for="prenom">Prénom :</label>
+				<input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom">
+			</fieldset>
+			<fieldset>
+				<label for="email">Email :</label>
+				<input type="email" id="email" name="email" placeholder="Entrez votre email">
+			</fieldset>
+			<fieldset>
+				<label for="password">Mot de passe :</label>
+				<input type="password" id="password" name="password" placeholder="Entrez votre mot de passe">
+			</fieldset>
+			<fieldset>
+				<label for="confirm_password">Confirmez le mot de passe :</label>
+				<input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmez votre mot de passe">
+			</fieldset>
+			<fieldset>
+				<label for="telephone">Téléphone :</label>
+				<input type="tel" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone">
+			</fieldset>
+			<fieldset>
+				<label for="adresse">Adresse :</label>
+				<input type="text" id="adresse" name="adresse" placeholder="Entrez votre adresse">
+			</fieldset>
+			<fieldset class="form-row">
+				<fieldset>
+					<label for="code_postal">Code postal :</label>
+					<input type="text" id="code_postal" name="code_postal" placeholder="Entrez votre code postal">
+				</fieldset>
+				<fieldset>
+					<label for="ville">Ville :</label>
+					<input type="text" id="ville" name="ville" placeholder="Entrez votre ville">
+				</fieldset>
+			</fieldset>
+			<button type="submit">Se connecter</button>
+			<a href="index.php?route=login">Vous avez déjà un compte ? <i class="fa-solid fa-hand-point-right"></i>
+			</a>
+		</form>
+	</main>
+{% endblock %}

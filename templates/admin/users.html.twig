@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+	<main>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-3">
+					<a href="javascript:history.back()" class="btn btn-secondary">Retour</a>
+				</div>
+			</div>
+			<div class="table-responsive">
+				<table class="table table-users">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Prénom</th>
+							<th>Adresse</th>
+							<th>Téléphone</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in users %}
+							<tr>
+								<td>{{ user.nom }}</td>
+								<td>{{ user.prenom }}</td>
+								<td>{{ user.adresse }}</td>
+								<td>{{ user.telephone }}</td>
+								<td>{{ user.email }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+{% endblock %}

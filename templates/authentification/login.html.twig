@@ -1,0 +1,21 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+	<main>
+		<form class="login_form" action="index.php?route=check-login" method="POST">
+			<input type="hidden" name="csrf_token" id="csrf_token" value="{{ session.csrf_token }}"/>
+			<fieldset>
+				<label for="email">Email</label>
+				<input type="text" name="email" id="email" require>
+			</fieldset>
+			<fieldset>
+				<label for="password">Mot de passe</label>
+				<input type="password" name="password" id="password" require>
+			</fieldset>
+			<button type="submit">Se connecter</button>
+			<a href="index.php?route=register">s'inscrire ici !
+				<i class="fa-solid fa-hand-point-right"></i>
+			</a>
+		</form>
+	</main>
+{% endblock %}

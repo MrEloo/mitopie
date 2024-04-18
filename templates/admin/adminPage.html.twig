@@ -1,0 +1,38 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+	<main class="bigger_text">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<a href="index.php?route=users" class="btn btn-primary mb-2">Liste des utilisateurs</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<a href="index.php?route=products" class="btn btn-primary mb-2">Liste des produits</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<a href="index.php?route=categories_products" class="btn btn-primary mb-2">Liste des catégories de produits</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<a href="index.php?route=products_alives" class="btn btn-primary mb-2">Liste des produits vivants</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<a href="index.php?route=categories_alives" class="btn btn-primary mb-2">Liste des catégories de produits vivants</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<a href="index.php?route=evenements" class="btn btn-primary mb-2">Liste des événements</a>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}
