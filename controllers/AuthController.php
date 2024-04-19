@@ -122,13 +122,9 @@ class AuthController extends AbstractController
 
 
                     //Création d'un nouvel utilisateur et insertion en base de donnée
-                    $newUser = new User($nom, $prenom, $email, $password, $telephone, $adresse, $codePostal, $ville);
+                    $newUser = new User($nom, $prenom, $email, $password, $telephone, $adresse, $codePostal, $ville, 0);
 
                     $userManager->createUser($newUser);
-                    $user = $userManager->getUserByEmail($email);
-
-
-                    $_SESSION['role'] = $user->getRole();
 
                     $this->redirect("index.php?route=login");
                 } else {

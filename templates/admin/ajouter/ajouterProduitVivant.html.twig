@@ -13,6 +13,7 @@
 					<div class="card-body">
 						<h5 class="card-title">Ajouter un nouveau produit</h5>
 						<form method="post" action="index.php?route=ajouter_produitVivant_" enctype="multipart/form-data">
+							<input type="hidden" name="media_url" value="{{ produit.media }}">
 							<div class="form-group">
 								<label for="nom">Nom du produit</label>
 								<input type="text" class="form-control" id="nom" name="nom">

@@ -13,6 +13,7 @@
 					<div class="card-body">
 						<h5 class="card-title">Modifier le produit "{{ produit.nom }}"</h5>
 						<form method="post" action="index.php?route=modifier_produit_&id={{ produit.id }}" enctype="multipart/form-data">
+							<input type="hidden" name="media_url" value="{{ produit.media }}">
 							<div class="form-group">
 								<label for="nom">Nom du produit</label>
 								<input type="text" class="form-control" id="nom" name="nom" value="{{ produit.nom }}">
@@ -31,7 +32,7 @@
 							</div>
 							<div class="form-group">
 								<label class="label_image" for="input_file">{{produit.media}}</label>
-								<input type="file" accept="image/jpeg, image/png, image/jpg" name="input_file" id="input_file">
+								<input type="file" accept="image/jpeg, image/png, image/jpg" value="{{produit.media}}" name="input_file" id="input_file">
 							</div>
 							<div class="form-group">
 								<label for="categorie">ID de catégorie</label>

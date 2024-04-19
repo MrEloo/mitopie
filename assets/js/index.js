@@ -103,16 +103,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const produitsSections = document.querySelectorAll('.filtre');
 
+
             produitsSections.forEach(section => {
                 const h2Element = section.querySelector('h2');
-                const splittedText = h2Element.textContent.split('|');
-                const trimedText = splittedText[1].trim();
+                const textContent = h2Element.textContent;
+
 
                 if (categorie === 'tous') {
                     // Si la catégorie sélectionnée est "tous", afficher toutes les sections
                     section.classList.remove('non_visible');
                     section.classList.add('visible');
-                } else if (trimedText !== categorie) {
+                } else if (textContent !== categorie) {
                     // Si la catégorie sélectionnée est différente de la partie de texte après "|", masquer la section
                     section.classList.remove('visible');
                     section.classList.add('non_visible');

@@ -56,8 +56,7 @@
 			{% if categorie.products %}
 
 				<section class="splide filtre" aria-label="Splide Basic HTML Example">
-					<h2 class="product_title">
-						{{ categorie.nom }}</h2>
+					<h2 class="product_title">{{ categorie.nom }}</h2>
 					<div class="splide__track">
 						<ul class="splide__list">
 							{% for product in categorie.products %}
@@ -115,13 +114,21 @@
 										<li class="splide__slide">
 											<div class="flex">
 												<img src="{{product_alive.media}}" alt="">
-												<p>PRIX :
-													{{product_alive.prix}}</p>
-												<p>DESCRIPTION :
-													{{product_alive.nom}}</p>
-												<p>Disponibilités :
-													<span class='vert'>En stock</span>
-												</p>
+												<div class="text_modale">
+													<p>
+														<i class="fa-solid fa-angle-right"></i>
+														PRIX :
+														{{product_alive.prix}}</p>
+													<p>
+														<i class="fa-solid fa-angle-right"></i>
+														DESCRIPTION :
+														{{product_alive.nom}}</p>
+													<p>
+														<i class="fa-solid fa-angle-right"></i>
+														Disponibilités :
+														<span class='vert'>En stock</span>
+													</p>
+												</div>
 											</div>
 										</li>
 									{% endfor %}
@@ -129,11 +136,13 @@
 							</div>
 						</section>
 					{% else %}
-						<h3>Disponibilités
+						<h3>
+							<i class="fa-solid fa-angle-right"></i>
+							Disponibilités
 							{{ categorie_animal.nom }}
 							:
 							<br>
-							<span class="rouge italic">aucun stock</span>
+							<span class="vert italic">En stock. (me contacter)</span>
 
 						</h3>
 					{% endif %}

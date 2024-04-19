@@ -12,6 +12,7 @@ class Router
     private ProduitController $prc;
     private ProduitVivantController $prvc;
     private EvenementController $ec;
+    private UserController $uc;
 
     public function __construct()
     {
@@ -24,6 +25,7 @@ class Router
         $this->prc = new ProduitController();
         $this->prvc = new ProduitVivantController();
         $this->ec = new EvenementController();
+        $this->uc = new UserController();
     }
 
     public function handleRequest(array $get): void
@@ -68,6 +70,12 @@ class Router
             $this->prc->filtrerProduit();
         } else if (isset($get["route"]) && $get["route"] === 'filtre_produitsVivants') {
             $this->prvc->filtrerProduitVivant();
+        } else if (isset($get["route"]) && $get["route"] === 'newsletter') {
+            $this->adc->showNewsletter();
+        } else if (isset($get["route"]) && $get["route"] === 'sendMailToUsers') {
+            $this->mc->sendMailToUsers();
+        } else if (isset($get["route"]) && $get["route"] === 'update_newsletter') {
+            $this->uc->updateNewsletter();
         } else if (isset($get["route"]) && $get["route"] === 'modifier_categorie') {
             if (isset($get["id"])) {
                 $this->cc->modiferCategorie();

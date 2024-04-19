@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+	{% set rate = session.rate %}
+	{% set reussi = session.reussi %}
+
+	{% if rate is not empty %}
+		<div class="alert alert-danger" role="alert">
+			{{ rate }}
+		</div>
+	{% elseif reussi is not empty %}
+		<div class="alert alert-success" role="alert">
+			{{ reussi }}
+		</div>
+	{% endif %}
+
+	<main>
+		<div class="container mt-5">
+			<h2>Envoyer une newsletter</h2>
+			<form action="index.php?route=sendMailToUsers" method="POST">
+				<div class="form-group">
+					<label for="objet">Objet :</label>
+					<input type="text" class="form-control" id="objet" name="objet" required>
+				</div>
+				<div class="form-group">
+					<label for="message">Message :</label>
+					<textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Envoyer</button>
+			</form>
+		</div>
+	</main>
+{% endblock %}

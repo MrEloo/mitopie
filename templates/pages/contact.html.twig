@@ -1,6 +1,22 @@
 {% extends "layout.html.twig" %}
 
+{% block title %}Me contacter
+{% endblock %}
+
 {% block main %}
+	{% set rate = session.rate %}
+	{% set reussi = session.reussi %}
+
+	{% if rate is not empty %}
+		<div class="alert alert-danger" role="alert">
+			{{ rate }}
+		</div>
+	{% elseif reussi is not empty %}
+		<div class="alert alert-success" role="alert">
+			{{ reussi }}
+		</div>
+	{% endif %}
+
 	<form class="contact_form" action="index.php?route=sendMail" method="POST">
 		<input type="hidden" name="csrf_token" id="csrf_token" value="{{ session.csrf_token }}"/>
 		<fieldset>
@@ -12,6 +28,14 @@
 			<input type="text" name="prenom" id="prenom" required>
 		</fieldset>
 		<fieldset>
+			<label for="email">Email</label>
+			{% if session.user_email is defined %}
+				<input type="text" name="email" value='{{session.user_email}}' id="email" required>
+			{% else %}
+				<input type="text" name="email" id="email" required>
+			{% endif %}
+		</fieldset>
+		<fieldset>
 			<label for="objet">objet</label>
 			{% if titre is defined %}
 				<input type="text" name="objet" id="objet" value='{{titre}}' required>
@@ -20,23 +44,10 @@
 			{% endif %}
 		</fieldset>
 		<fieldset>
-			<label for="email">Email</label>
-			{% if session.user_email is defined %}
-				<input type="text" name="email" value='{{session.user_email}}' id="email" required>
-			{% else %}
-				<input type="text" name="email" id="email" required>
-			{% endif %}
-
-		</fieldset>
-		<fieldset>
 			<label for="message">Message</label>
 			<textarea type="text" name="message" id="message" required></textarea>
 		</fieldset>
 		<button type='submit'>Envoyer</button>
-		{% if reussi is not empty %}
-			<p class="reussi">{{reussi}}</p>
-		{% elseif rate is not empty %}
-			<p class="rate">{{rate}}</p>
-		{% endif %}
+
 	</form>
 {% endblock %}

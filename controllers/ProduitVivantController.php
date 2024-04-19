@@ -10,6 +10,7 @@ class ProduitVivantController extends AbstractController
 
             $cm = new CategorieAnimalManager();
             $categories = $cm->getAllCatAnimal();
+            dump($produit);
             $this->render('admin/modifier/modifierProduitVivant.html.twig', ['produit' => $produit, 'categories' => $categories]);
         } else {
             $this->redirect('index.php');
@@ -50,6 +51,7 @@ class ProduitVivantController extends AbstractController
 
                 $uploader->upload($_FILES, 'input_file');
 
+
                 $pm->ajouterProduitVivant($_POST['nom'], $_POST['prix'], $_POST['description'], './uploads/' . $_FILES['input_file']['name'], $_POST['categorie']);
 
                 $this->redirect("index.php?route=products_alives");
@@ -63,13 +65,19 @@ class ProduitVivantController extends AbstractController
     {
         if ($this->checkAdmin()) {
             if (isset($_POST)) {
+
                 $pm = new ProduitVivantManager();
 
                 $uploader = new Uploader();
 
                 $uploader->upload($_FILES, 'input_file');
 
-                $pm->modifierProduitVivant($_POST['nom'], $_POST['prix'], $_POST['description'], './uploads/' . $_FILES['input_file']['name'], $_POST['categorie'], ($_GET['id']));
+                if (empty($_FILES['input_file']['name'])) {
+                    $pm->ajouterProduitVivant($_POST['nom'], $_POST['prix'], $_POST['description'], $_POST['media_url'], $_POST['categorie']);
+                } else {
+                    $pm->ajouterProduitVivant($_POST['nom'], $_POST['prix'], $_POST['description'], './uploads/' . $_FILES['input_file']['name'], $_POST['categorie']);
+                }
+
 
                 $this->redirect("index.php?route=products_alives");
             }

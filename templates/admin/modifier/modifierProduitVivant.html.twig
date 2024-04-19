@@ -13,6 +13,7 @@
 					<div class="card-body">
 						<h5 class="card-title">Modifier le produit "{{ produit.nom }}"</h5>
 						<form method="post" action="index.php?route=modifier_produitVivant_&id={{ produit.id }}" enctype="multipart/form-data">
+							<input type="hidden" name="media_url" value="{{ produit.media }}">
 							<div class="form-group">
 								<label for="nom">Nom du produit</label>
 								<input type="text" class="form-control" id="nom" name="nom" value="{{ produit.nom }}">
@@ -34,7 +35,7 @@
 								<select class="form-control" name="categorie" id="categorie" required>
 									{% if produit is defined %}
 										{% set selectedCategoryId = produit.categorie.id %}
-										<option value="{{ selectedCategoryId }}">{{ produit.categorie.nom }}</option>
+										<option value="{{ selectedCategoryId }}">{{ produit.categorieAnimal.nom }}</option>
 									{% endif %}
 									{% for categorie in categories %}
 										{% if produit is not defined or categorie.id != selectedCategoryId %}

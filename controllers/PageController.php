@@ -47,9 +47,17 @@ class PageController extends AbstractController
     public function contact(): void
     {
         if (isset($_GET['titre'])) {
+            if (!empty($_SESSION['reussi']) || !empty($_SESSION['rate'])) {
+                session_unset(); // Supprimer toutes les variables de session
+                session_destroy(); // Détruire complètement la session
+            }
             $titre = $_GET['titre'];
             $this->render("pages/contact.html.twig", ['titre' => $titre]);
         } else {
+            if (!empty($_SESSION['reussi']) || !empty($_SESSION['rate'])) {
+                session_unset(); // Supprimer toutes les variables de session
+                session_destroy(); // Détruire complètement la session
+            }
             $this->render("pages/contact.html.twig", []);
         }
     }

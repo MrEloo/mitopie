@@ -5,7 +5,7 @@ class User
     private ?int $id;
     private string $role = 'USER';
 
-    public function __construct(private string $nom, private string $prenom, private string $email, private string $password, private string $telephone, private string $adresse, private int $code_postal, private string $ville)
+    public function __construct(private string $nom, private string $prenom, private string $email, private string $password, private string $telephone, private string $adresse, private int $code_postal, private string $ville, private int $newsletter)
     {
         $this->nom = $nom;
         $this->prenom = $prenom;
@@ -15,6 +15,7 @@ class User
         $this->adresse = $adresse;
         $this->code_postal = $code_postal;
         $this->ville = $ville;
+        $this->newsletter = $newsletter;
     }
 
 
@@ -215,6 +216,26 @@ class User
     public function setPassword($password)
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of newsletter
+     */
+    public function getNewsletter()
+    {
+        return $this->newsletter;
+    }
+
+    /**
+     * Set the value of newsletter
+     *
+     * @return  self
+     */
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
 
         return $this;
     }

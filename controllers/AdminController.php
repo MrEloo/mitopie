@@ -99,4 +99,15 @@ class AdminController extends AbstractController
             $this->redirect('index.php');
         }
     }
+
+    public function showNewsletter(): void
+    {
+        if ($this->checkAdmin()) {
+            $_SESSION['reussi'] = "";
+            $_SESSION['rate'] = "";
+            $this->render('admin/newsletter.html.twig', []);
+        } else {
+            $this->redirect('index.php');
+        }
+    }
 }

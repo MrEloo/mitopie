@@ -63,11 +63,19 @@ class ProduitController extends AbstractController
             if (isset($_POST)) {
                 $pm = new ProduitManager();
 
+                // dump($_FILES);
+                // dump($_POST);
+
                 $uploader = new Uploader();
 
                 $uploader->upload($_FILES, 'input_file');
 
-                $pm->modifierProduit($_POST['nom'], $_POST['prix'], $_POST['quantite'], $_POST['description'], './uploads/' . $_FILES['input_file']['name'], $_POST['categorie'], $_GET['id']);
+                if (empty($_FILES['input_file']['name'])) {
+                    $pm->modifierProduit($_POST['nom'], $_POST['prix'], $_POST['quantite'], $_POST['description'], $_POST['media_url'], $_POST['categorie'], $_GET['id']);
+                } else {
+                    $pm->modifierProduit($_POST['nom'], $_POST['prix'], $_POST['quantite'], $_POST['description'], './uploads/' . $_FILES['input_file']['name'], $_POST['categorie'], $_GET['id']);
+                }
+
 
                 $this->redirect("index.php?route=products");
             }

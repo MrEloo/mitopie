@@ -1,32 +1,42 @@
 {% extends "layout.html.twig" %}
 
+{% block title %}Mon profil
+{% endblock %}
+
 
 {% block main %}
 	<main class="mon_profil">
 		<h1>Mes informations</h1>
 
 		<p>
-			NOM :
+			<strong>NOM :</strong>
 			{{user.nom}}
 		</p>
 		<p>
-			PRENOM :
+			<strong>PRENOM :</strong>
 			{{user.prenom}}
 		</p>
 		<p>
-			TELEPHONE :
+			<strong>TELEPHONE :</strong>
 			{{user.telephone}}
 		</p>
 		<p>
-			EMAIL :
+			<strong>EMAIL :</strong>
 			{{user.email}}
 		</p>
 		<p>
-			ADRESSE :
+			<strong>ADRESSE :</strong>
 			{{user.adresse}}
 			{{user.code_postal}},
 			{{user.ville}}
-		</p>%
+		</p>
+		<p>
+			<strong>Newsletter :</strong>
+			{% if user.newsletter == 1 %}Inscrit (<a class='italic' href="index.php?route=update_newsletter&bool=0">se desinscrire</a>)
+			{% else %}
+				<a href="index.php?route=update_newsletter&bool=1">S'inscrire</a>
+			{% endif %}
+		</p>
 
 	</main>
 {% endblock %}

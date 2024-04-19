@@ -23,6 +23,30 @@ a {
     color: inherit;
 }
 
+form .form-group {
+    font-size: 2rem;
+}
+
+.card-title {
+    font-size: 3rem;
+}
+
+.label_image {
+    max-width: 100%;
+}
+
+/* form .form-group select {
+    font-size: 2rem;
+} */
+
+.btn {
+    font-size: 2rem;
+}
+
+.card {
+    font-size: 2rem;
+}
+
 .background_image_carotte {
     opacity: 0.6;
     pointer-events: none;
@@ -314,11 +338,12 @@ main {
     left: 50%;
     transform: translate(-50%, -50%) scale(0.1);
     background-color: white;
-    height: 50rem;
+    height: 70rem;
     width: 38rem;
     border-radius: 1em;
     visibility: hidden;
     transition: all 0.3s;
+    display: none;
 }
 
 .modale_alive .splide__track {
@@ -329,6 +354,10 @@ main {
 .logo_modale {
     position: absolute;
     top: -1.5rem;
+}
+
+.text_modale {
+    margin-top: 5rem;
 }
 
 .logo_modale svg {
@@ -396,11 +425,12 @@ main {
 
 .modale_alive .modale_content {
     padding: 5em;
-    text-align: center;
+    text-align: left;
 }
 
 .modale_alive .flex p {
     font-size: 2rem;
+    text-align: left;
 }
 
 .modale_alive h3 {
@@ -413,6 +443,7 @@ main {
 
 .vert {
     color: rgba(246, 150, 45, 0.8);
+    font-size: 1.5rem
 }
 
 
@@ -535,6 +566,7 @@ main {
     padding: 0.8em 4em 0.8em 4em;
     border: 1px solid rgba(246, 150, 45, 1);
     border-radius: 0.9em;
+    max-width: 100%;
 }
 
 .description_produit form button {
@@ -924,6 +956,9 @@ footer ul li {
 }
 
 .locavor a {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
     display: block;
     margin: 0 auto;
     padding: 1em 2em 1em 2em;
@@ -1220,4 +1255,28 @@ footer ul li {
     padding: 1em;
     font-size: 2rem;
     text-align: left;
+}
+
+/**************/
+/********** KEYFRAMES AND ANIMATIONS ************** */
+/**************/
+
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+    .splide {
+        scale: 0.8;
+        opacity: 0;
+        animation: showOnDelay linear forwards;
+        animation-timeline: view();
+        animation-range: 150px 400px;
+    }
+
+    @keyframes showOnDelay {
+        to {
+            opacity: 1;
+            scale: 1;
+        }
+    }
 }

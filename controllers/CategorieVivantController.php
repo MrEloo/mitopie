@@ -39,7 +39,11 @@ class CategorieVivantController extends AbstractController
             if (isset($_POST)) {
                 $cam = new CategorieAnimalManager();
 
-                $cam->ajouterCategorieVivant($_POST['nom'], $_POST['media']);
+                $uploader = new Uploader();
+
+                $uploader->upload($_FILES, 'input_file');
+
+                $cam->ajouterCategorieVivant($_POST['nom'], './uploads/' . $_FILES['input_file']['name']);
 
                 $this->redirect("index.php?route=categories_alives");
             }
@@ -53,7 +57,22 @@ class CategorieVivantController extends AbstractController
             if (isset($_POST)) {
                 $cam = new CategorieAnimalManager();
 
-                $cam->modifierCategorieVivant($_GET['id'], $_POST['nom'], $_POST['media']);
+                $categorie = $cam->getAllCatAnimal();
+
+
+                $uploader = new Uploader();
+
+                $uploader->upload($_FILES, 'input_file');
+
+                // dump($_POST);
+                // dump($_FILES);
+
+
+                if (empty($_FILES['input_file']['name'])) {
+                    $cam->modifierCategorieVivant($_GET['id'], $_POST['nom'], $_POST['media_url']);
+                } else {
+                    $cam->modifierCategorieVivant($_GET['id'], $_POST['nom'], './uploads/' . $_FILES['input_file']['name']);
+                }
 
                 $this->redirect("index.php?route=categories_alives");
             }

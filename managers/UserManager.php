@@ -11,13 +11,14 @@ class UserManager extends AbstractManager
 
         if ($user_data) {
 
-            $user = new User($user_data['nom'], $user_data['prenom'], $user_data['email'], $user_data['password'], $user_data['telephone'], $user_data['adresse'], $user_data['code_postal'], $user_data['ville'], $user_data['role']);
+            $user = new User($user_data['nom'], $user_data['prenom'], $user_data['email'], $user_data['password'], $user_data['telephone'], $user_data['adresse'], $user_data['code_postal'], $user_data['ville'], $user_data['newsletter']);
             $user->setId($user_data['id']);
             $user->setRole($user_data['role']);
 
             $_SESSION['connexion'] = 'autorise';
 
             return $user;
+            dump($user);
         } else {
             return null;
         }
@@ -51,7 +52,7 @@ class UserManager extends AbstractManager
 
             $users_array = [];
             foreach ($users_data as $key => $user_data) {
-                $users = new User($user_data['nom'], $user_data['prenom'], $user_data['email'], $user_data['password'], $user_data['telephone'], $user_data['adresse'], $user_data['code_postal'], $user_data['ville'], $user_data['role']);
+                $users = new User($user_data['nom'], $user_data['prenom'], $user_data['email'], $user_data['password'], $user_data['telephone'], $user_data['adresse'], $user_data['code_postal'], $user_data['ville'], $user_data['newsletter']);
                 $users->setId($user_data['id']);
                 $users->setRole($user_data['role']);
                 $users_array[] = $users;
@@ -60,5 +61,12 @@ class UserManager extends AbstractManager
         } else {
             return null;
         }
+    }
+
+    public function updateNewsletter(int $newsletter, int $id): void
+    {
+        $updateQuery = $this->db->prepare('UPDATE users SET newsletter = :newsletter WHERE id = :id ');
+        $parameters = ['newsletter' => $newsletter, 'id' => $id];
+        $updateQuery->execute($parameters);
     }
 }

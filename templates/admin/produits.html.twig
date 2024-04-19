@@ -30,9 +30,9 @@
 					</form>
 				</div>
 			</div>
+
 			<div class="row">
 				{% if produits_filtrer is defined %}
-
 					{% for produit_filtrer in produits_filtrer %}
 						<div class="col-md-4 mb-4">
 							<div class="card">
@@ -42,7 +42,7 @@
 										{{ produit_filtrer.prix }}€</p>
 									<p class="card-text">Quantité:
 										{{ produit_filtrer.quantite }}</p>
-									<p class="card-text">{{ produit.description }}</p>
+									<p class="card-text">{{ produit_filtrer.description }}</p>
 									<img src="{{ produit_filtrer.media }}" class="img-fluid" alt="{{ produit_filtrer.nom }}">
 									<div class="btn-group mt-3" role="group">
 										<a href="index.php?route=modifier_produit&id={{ produit_filtrer.id }}" class="btn btn-primary">Modifier</a>
@@ -50,32 +50,30 @@
 									</div>
 								</div>
 							</div>
-						{% endfor %}
-
-					{% else %}
-						{% for produit in produits %}
-							<div class="col-md-4 mb-4">
-								<div class="card">
-									<div class="card-body">
-										<h5 class="card-title">{{ produit.nom }}</h5>
-										<p class="card-text">Prix:
-											{{ produit.prix }}€</p>
-										<p class="card-text">Quantité:
-											{{ produit.quantite }}</p>
-										<p class="card-text">{{ produit.description }}</p>
-										<img src="{{ produit.media }}" class="img-fluid" alt="{{ produit.nom }}">
-										<div class="btn-group mt-3" role="group">
-											<a href="index.php?route=modifier_produit&id={{ produit.id }}" class="btn btn-primary">Modifier</a>
-											<a href="index.php?route=supprimer_produit&id={{ produit.id }}" class="btn btn-danger">Supprimer</a>
-										</div>
+						</div>
+					{% endfor %}
+				{% else %}
+					{% for produit in produits %}
+						<div class="col-md-4 mb-4">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">{{ produit.nom }}</h5>
+									<p class="card-text">Prix:
+										{{ produit.prix }}€</p>
+									<p class="card-text">Quantité:
+										{{ produit.quantite }}</p>
+									<p class="card-text">{{ produit.description }}</p>
+									<img src="{{ produit.media }}" class="img-fluid" alt="{{ produit.nom }}">
+									<div class="btn-group mt-3" role="group">
+										<a href="index.php?route=modifier_produit&id={{ produit.id }}" class="btn btn-primary">Modifier</a>
+										<a href="index.php?route=supprimer_produit&id={{ produit.id }}" class="btn btn-danger">Supprimer</a>
 									</div>
 								</div>
 							</div>
-						{% endfor %}
-					{% endif %}
-
-
-				</div>
+						</div>
+					{% endfor %}
+				{% endif %}
 			</div>
-		</main>
-	{% endblock %}
+		</div>
+	</main>
+{% endblock %}
