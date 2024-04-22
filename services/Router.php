@@ -5,7 +5,7 @@ class Router
 {
     private PageController $pc;
     private AuthController $ac;
-    private MailController $mc;
+    private MailerService $ms;
     private AdminController $adc;
     private CategorieController $cc;
     private CategorieVivantController $cvc;
@@ -18,7 +18,7 @@ class Router
     {
         $this->pc = new PageController();
         $this->ac = new AuthController();
-        $this->mc = new MailController();
+        $this->ms = new MailerService();
         $this->adc = new AdminController();
         $this->cc = new CategorieController();
         $this->cvc = new CategorieVivantController();
@@ -47,7 +47,7 @@ class Router
         } else if (isset($get["route"]) && $get["route"] === 'about') {
             $this->pc->about();
         } else if (isset($get["route"]) && $get["route"] === 'sendMail') {
-            $this->mc->sendMail();
+            $this->ms->sendMail();
         } else if (isset($get["route"]) && $get["route"] === 'distribution') {
             $this->pc->showDistribution();
         } else if (isset($get["route"]) && $get["route"] === 'profil') {
@@ -73,9 +73,13 @@ class Router
         } else if (isset($get["route"]) && $get["route"] === 'newsletter') {
             $this->adc->showNewsletter();
         } else if (isset($get["route"]) && $get["route"] === 'sendMailToUsers') {
-            $this->mc->sendMailToUsers();
+            $this->ms->sendMailToUsers();
         } else if (isset($get["route"]) && $get["route"] === 'update_newsletter') {
             $this->uc->updateNewsletter();
+        } else if (isset($get["route"]) && $get["route"] === 'mentions_legales') {
+            $this->pc->showMentions();
+        } else if (isset($get["route"]) && $get["route"] === 'protection_donnees') {
+            $this->pc->showProtection();
         } else if (isset($get["route"]) && $get["route"] === 'modifier_categorie') {
             if (isset($get["id"])) {
                 $this->cc->modiferCategorie();

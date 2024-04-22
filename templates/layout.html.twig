@@ -7,6 +7,12 @@
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Whisper&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Whisper&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="assets/css/index.css">
 		<title>
 			{% block title %}Mitopie - Les petits produits
@@ -21,10 +27,18 @@
 						<div class="overlay"></div>
 
 						<img class="bio_image" src="assets/images/bio.png" alt="logo_mitopie">
+
 						<a href="index.php"><img class="logo_image" src="assets/images/mitopie.png" alt="logo_mitopie"></a>
 						<a href="index.php?route=profil">
 							<i class="fa-solid fa-user"></i>
 						</a>
+
+						<h1>
+							<span class="vert">Bio</span>
+							et
+							<span class="orange">Responsable</span>
+						</h1>
+
 						<section class='burger_container'>
 							<div class="menu_burger">
 								<div></div>
@@ -46,6 +60,7 @@
 											<a href="index.php?route=admin">Espace Admin</a>
 										</li>
 									{% endif %}
+
 									<li>
 										<a href="index.php">Accueil</a>
 									</li>
@@ -58,14 +73,11 @@
 												<li class="border">
 													<a href="index.php?route=profil">Mon profil</a>
 												</li>
-												<li class="border">
-													<a href="index.php?route=logout">Deconnexion</a>
-												</li>
 											</ul>
 										</div>
 									</li>
 									<li>
-										<a href="index.php?route=contact">contact</a>
+										<a href="index.php?route=contact">Contact</a>
 									</li>
 									<li>
 										<a href="index.php?route=about">Qui suis-je ?</a>
@@ -83,10 +95,18 @@
 						<div class="overlay"></div>
 
 						<img class="bio_image" src="assets/images/bio.png" alt="logo_mitopie">
+
 						<a href="index.php"><img class="logo_image" src="assets/images/mitopie.png" alt="logo_mitopie"></a>
 						<a href="index.php?route=profil">
 							<i class="fa-solid fa-user"></i>
 						</a>
+
+						<h1>
+							<span class="vert">Bio</span>
+							et
+							<span class="orange">Responsable</span>
+						</h1>
+
 						<section class='burger_container'>
 							<div class="menu_burger">
 								<div></div>
@@ -113,16 +133,16 @@
 										<div class='drop_down_menu_1'>
 											<ul>
 												<li class="border">
-													<a href="index.php?route=login">connexion</a>
+													<a href="index.php?route=login">Connexion</a>
 												</li>
 												<li class="border">
-													<a href="index.php?route=register">inscription</a>
+													<a href="index.php?route=register">Inscription</a>
 												</li>
 											</ul>
 										</div>
 									</li>
 									<li>
-										<a href="index.php?route=contact">contact</a>
+										<a href="index.php?route=contact">Contact</a>
 									</li>
 									<li>
 										<a href="index.php?route=about">Qui suis-je ?</a>
@@ -145,62 +165,63 @@
 
 			<footer>
 
-				<section>
-					<img class="logo_footer" src="assets/images/mitopietest.png" alt="">
-					<h2>L'entreprise</h2>
-					<ul>
-						<li>
-							<i class="fa-solid fa-hand"></i>
-							<a href="index.php?route=about">Qui sommes nous ?</a>
-						</li>
-						<li></li>
-						<li>
-							<i class="fa-solid fa-magnifying-glass"></i>
-							<a href="index.php?route=distribution">Nous retrouver</a>
-						</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Mes Informations</h2>
-					<ul>
-						<li>
-							<i class="fa-solid fa-map-pin"></i>
-							Le moulin de Favière, 53120 Brecé</li>
-						<li>
-							<i class="fa-solid fa-phone"></i>
-							06.78.81.66.20</li>
-
-						<li>
-							<i class="fa-solid fa-envelope"></i>
-							mitopie53@gmail.com</li>
-					</ul>
-					<section class="border_none">
-						<i class="fa-brands fa-square-facebook"></i>
-						<i class="fa-brands fa-linkedin"></i>
-					</section>
-
-
-					<section class='footer_second_part'>
+				<article>
+					<section>
+						<img class="logo_footer" src="assets/images/mitopietest.png" alt="">
+						<h2>L'entreprise</h2>
 						<ul>
-							<li><a href="mentions légales">Mentions légales</a></li>
-							<li><a href="mentions légales">Politique de protection des donnéees</a></li>
-							<li><a href="index.php?route=contact">Contacter</a></li>
-
-
+							<li>
+								<i class="fa-solid fa-hand"></i>
+								<a href="index.php?route=about">Qui sommes nous ?</a>
+							</li>
+							<li></li>
+							<li>
+								<i class="fa-solid fa-magnifying-glass"></i>
+								<a href="index.php?route=distribution">Nous retrouver</a>
+							</li>
 						</ul>
 					</section>
 
 					<section>
-						<img class='footer_bio' src="assets/images/bio.png" alt="">
+						<h2>Mes Informations</h2>
+						<ul>
+							<li>
+								<i class="fa-solid fa-map-pin"></i>
+								Le moulin de Favière, 53120 Brecé</li>
+							<li>
+								<i class="fa-solid fa-phone"></i>
+								06.78.81.66.20</li>
+
+							<li>
+								<i class="fa-solid fa-envelope"></i>
+								mitopie53@gmail.com</li>
+						</ul>
+						<section class="border_none">
+							<i class="fa-brands fa-square-facebook"></i>
+							<i class="fa-brands fa-linkedin"></i>
+						</section>
 					</section>
 
+				</article>
+				<section class='footer_second_part'>
+					<ul>
+						<li><a href="index.php?route=mentions_legales">Mentions légales</a></li>
+						<li><a href="index.php?route=protection_donnees">Politique de protection des donnéees</a></li>
+						<li><a href="index.php?route=contact">Contacter</a></li>
 
-				</footer>
-			{% endblock %}
 
-			<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-			<script type="module" src="assets/js/index.js"></script>
-		</html>
+					</ul>
+				</section>
+
+				<section>
+					<img class='footer_bio' src="assets/images/bio.png" alt="">
+				</section>
+
+
+			</footer>
+		{% endblock %}
+
+		<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+		<script type="module" src="assets/js/index.js"></script>
 	</body>
-</html>
+</html></body></html></body></html>

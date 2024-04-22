@@ -16,6 +16,18 @@
 			<a href="index.php?route=register">s'inscrire ici !
 				<i class="fa-solid fa-hand-point-right"></i>
 			</a>
+
+			{% if session.erreur_hash is defined %}
+				<p>{{session.erreur_hash}}</p>
+			{% endif %}
+
+			{% if session.erreur_mail is defined %}
+				<p>{{session.erreur_mail}}</p>
+			{% endif %}
+
+			{% if session.erreur_remplissage is defined %}
+				<p>{{session.erreur_remplissage}}</p>
+			{% endif %}
 		</form>
 	</main>
 {% endblock %}

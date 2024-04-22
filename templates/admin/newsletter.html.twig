@@ -18,6 +18,7 @@
 		<div class="container mt-5">
 			<h2>Envoyer une newsletter</h2>
 			<form action="index.php?route=sendMailToUsers" method="POST">
+				<input type="hidden" name="csrf_token" id="csrf_token" value="{{ session.csrf_token }}"/>
 				<div class="form-group">
 					<label for="objet">Objet :</label>
 					<input type="text" class="form-control" id="objet" name="objet" required>

@@ -1,0 +1,62 @@
+{% extends "layout.html.twig" %}
+
+{% block main %}
+	<main class="mentions">
+		<h1>Mentions Légales</h1>
+
+		<h2>Informations générales</h2>
+
+		<p>Le présent site est la propriété de
+			{{ entreprise }}, immatriculée au Registre du Commerce et des Sociétés sous le numéro
+			{{ numeroRCS }}, dont le siège social est situé à
+			{{ adresseComplete }}, et dont le numéro de TVA intracommunautaire est
+			{{ numeroTVA }}.</p>
+
+		<p>Directeur de la publication :
+			{{ directeurPublication }}</p>
+
+		<h2>Contact</h2>
+
+		<p>Pour toute question ou demande d'information concernant le site, vous pouvez nous contacter :</p>
+
+		<p>Email :
+			{{ adresseEmail }}</p>
+		<p>Téléphone :
+			{{ numeroTelephone }}</p>
+		<p>Adresse postale :
+			{{ adressePostale }}</p>
+
+		<h2>Hébergement</h2>
+
+		<p>Le site est hébergé par
+			{{ nomHebergeur }}, dont le siège social est situé à
+			{{ adresseHebergeur }}.</p>
+
+		<p>Pour contacter l'hébergeur, veuillez utiliser les coordonnées suivantes :</p>
+
+		<p>Email :
+			{{ emailHebergeur }}</p>
+		<p>Téléphone :
+			{{ telephoneHebergeur }}</p>
+
+		<h2>Responsabilité</h2>
+
+		<p>Nous nous efforçons de fournir des informations exactes et à jour sur ce site, mais nous ne pouvons garantir leur exhaustivité ni leur exactitude. En aucun cas, nous ne pourrons être tenus responsables des dommages directs ou indirects résultant de l'utilisation de ce site ou des informations qu'il contient.</p>
+
+		<h2>Propriété intellectuelle</h2>
+
+		<p>L'ensemble du contenu de ce site, y compris les textes, les images, les graphiques, les logos et les vidéos, est protégé par les lois sur la propriété intellectuelle et est la propriété exclusive de
+			{{ entreprise }}
+			ou de ses partenaires. Toute reproduction, modification ou distribution sans autorisation écrite est strictement interdite.</p>
+
+		<h2>Cookies</h2>
+
+		<p>Ce site utilise des cookies pour améliorer l'expérience de l'utilisateur. En naviguant sur ce site, vous consentez à l'utilisation de cookies conformément à notre politique en matière de cookies.</p>
+
+		<h2>Modification des mentions légales</h2>
+
+		<p>Nous nous réservons le droit de modifier les présentes mentions légales à tout moment. Les modifications entreront en vigueur dès leur publication sur le site.</p>
+
+
+	</main>
+{% endblock %}

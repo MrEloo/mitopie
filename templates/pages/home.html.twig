@@ -2,103 +2,137 @@
 
 {% block main %}
 	<main class='modale_container'>
-		<section class="alaune">
-
-			<img class="background_image_carotte" src="assets/images/carotte.png" alt="">
 
 
-			<h1>Produit à la une</h1>
-			{% for evenement in evenements %}
-				<i class="fa-solid fa-star"></i>
-				<i class="fa-solid fa-star"></i>
-				<p>
-					{{evenement.description}}
-				</p>
-				<a class="button_alaune" href="index.php?route=contact&titre={{evenement.titre|url_encode}}">
-					En savoir plus
-				</a>
-				<br>
-				<i class="fa-solid fa-star"></i>
-				<i class="fa-solid fa-star"></i>
-			{% endfor %}
+		<div class='above_header'>
+			<section class="alaune">
+
+				<img class="background_image_carotte" src="assets/images/carotte.png" alt="">
 
 
-		</section>
+				<h1>Produit à la une</h1>
+				{% for evenement in evenements %}
+					<section class="flex_alaune">
+						<i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i>
+						<p>
+							{{evenement.description}}
+						</p>
+						<a class="button_alaune" href="index.php?route=contact&titre={{evenement.titre|url_encode}}">
+							En savoir plus
+						</a>
+						<br>
+						<i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star"></i>
+					</section>
+				{% endfor %}
 
+
+			</section>
+
+
+			<section class="produit_frais">
+				<h2>
+					<i class="fa-solid fa-circle"></i>
+					EN EXCLUSIVITE
+					<i class="fa-solid fa-circle"></i>
+				</h2>
+				<P>Découvrez l'essence même de la fraîcheur et de la diversité dans notre sélection exclusive de produits phares.
+					<span class="orange">Cultivés avec amour</span>
+					et récoltés à maturité, nos légumes, fruits et herbes aromatiques sont soigneusement choisis pour leur qualité et leur saveur incomparables. Plongez dans un univers de couleurs, de textures et de saveurs authentiques, où chaque produit raconte une histoire de terroir et de
+					<span class="orange">savoir-faire artisanal</span>. Bienvenue dans notre oasis de fraîcheur, où la nature est à l'honneur et où chaque bouchée est une célébration de l'abondance de la terre.</p>
+			</section>
+
+		</div>
+
+		<section><img class="direct_mobile" src="assets/images/direct.jpg" alt=""></section>
 
 		<section class="description_produit">
-			<h2>Quid de nos produits ?</h2>
-			<p>Tous nos produits sont
-				<span class="produit_bio">BIO</span>
-				et
-				<span class="produit_responsable">RESPONSABLE</span>
-			</p>
-			<form action="" id="filtre_form">
-				<label for="categorie"></label>
-				<select name="categorie" id="categorie">
-					<option value="" disabled selected>Choisir par catégorie</option>
-					<option value="tous">Tous nos produits</option>
-					{% for categorie in categories %}
-						{% if categorie.products %}
-							<option value="{{categorie.nom}}">{{categorie.nom}}</option>
-						{% endif %}
-					{% endfor %}
+			<article>
+				<h2>
+					<i class="fa-solid fa-circle"></i>
+					NOS PRODUITS
+					<i class="fa-solid fa-circle"></i>
+				</h2>
+				<p class="text_description_produit">Découvrez notre vaste sélection de produits de saison, tous issus de l'agriculture biologique et cultivés de manière responsable avec expertise et dévouement. Chaque produit est soigneusement traité, de la graine à la récolte, dans le respect de la nature et des ressources de notre planète. Notre engagement envers la qualité et la durabilité se reflète dans chacun de nos produits, pour vous offrir une expérience authentique et pleine de saveurs. Rejoignez-nous dans notre voyage pour soutenir une agriculture respectueuse de l'environnement et savourez le goût exquis des produits cultivés avec amour et maîtrise.</p>
+				{# <p>Tous nos produits sont
+																																																																																																																																																				<span class="produit_bio">BIO</span>
+																																																																																																																																																				et
+																																																																																																																																																				<span class="produit_responsable">RESPONSABLE</span>
+																																																																																																																																																			</p> #}
+			</article>
+			<article>
+				<img src="assets/images/direct.jpg" alt="">
+				<form action="" id="filtre_form">
+					<label for="categorie"></label>
+					<select name="categorie" id="categorie">
+						<option value="" disabled selected>Choisir par catégorie</option>
+						<option value="tous">Tous nos produits</option>
+						{% for categorie in categories %}
+							{% if categorie.products %}
+								<option value="{{categorie.nom}}">{{categorie.nom}}</option>
+							{% endif %}
+						{% endfor %}
 
-				</select>
-				<button>filtrer</button>
-			</form>
+					</select>
+					<button>filtrer</button>
+				</form>
+			</article>
 		</section>
 
 		<div class="overlay_modale_produits"></div>
 
 		{# //SLIDER POUR LES PRRODUITS DE LA FERME #}
-		{% for categorie in categories %}
-			{% if categorie.products %}
+		<section class="flex_sliders">
+			{% for categorie in categories %}
+				{% if categorie.products %}
 
-				<section class="splide filtre" aria-label="Splide Basic HTML Example">
-					<h2 class="product_title">{{ categorie.nom }}</h2>
-					<div class="splide__track">
-						<ul class="splide__list">
-							{% for product in categorie.products %}
-								<li class="splide__slide">
-									<div class="flex">
-										<img src="{{ product.media }}" alt="">
-										<button class="show_modale" data-show-modal="{{ product.id }}">Détails du produit</button>
-									</div>
-								</li>
-							{% endfor %}
-						</ul>
-					</div>
-				</section>
-			{% endif %}
-		{% endfor %}
-
-		<section class="vie_animal">
-			<h2>La vie des animaux à la ferme</h2>
-			<p>Ici, tous nos animaux sont élevés dans de bonnes conditions de manière
-				<span class="important">bio</span>
-				et responsable. Nous croyons fermement en l'importance du
-				<span class="important">bien-être</span>
-				animal et de la durabilité. Nos animaux bénéficient d'un espace suffisant pour se déplacer librement, d'une alimentation saine et équilibrée, et de soins attentifs. Nous nous engageons à respecter les normes les plus strictes en matière de santé et de sécurité pour assurer le bien-être de nos animaux et la qualité de nos produits. En choisissant des pratiques agricoles
-				<span class="important">durables et respectueuses</span>
-				de l'environnement, nous contribuons également à préserver notre planète pour les générations futures.</p>
+					<section class="splide filtre" aria-label="Splide Basic HTML Example">
+						<h2 class="product_title">{{ categorie.nom }}</h2>
+						<div class="splide__track">
+							<ul class="splide__list">
+								{% for product in categorie.products %}
+									<li class="splide__slide">
+										<div class="flex">
+											<img src="{{ product.media }}" alt="">
+											<button class="show_modale" data-show-modal="{{ product.id }}">Détails du produit</button>
+										</div>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</section>
+				{% endif %}
+			{% endfor %}
 		</section>
+		<section class="flex_animal_text">
+			<section class="vie_animal">
+				<h2>La vie des animaux à la ferme</h2>
+				<p>Ici, tous nos animaux sont élevés dans de bonnes conditions de manière
+					<span class="important">bio</span>
+					et responsable. Nous croyons fermement en l'importance du
+					<span class="important">bien-être</span>
+					animal et de la durabilité. Nos animaux bénéficient d'un espace suffisant pour se déplacer librement, d'une alimentation saine et équilibrée, et de soins attentifs. Nous nous engageons à respecter les normes les plus strictes en matière de santé et de sécurité pour assurer le bien-être de nos animaux et la qualité de nos produits. En choisissant des pratiques agricoles
+					<span class="important">durables et respectueuses</span>
+					de l'environnement, nous contribuons également à préserver notre planète pour les générations futures.</p>
+			</section>
 
-		{# //SLIDER POUR LES ANIMEAUX VIVANTS #}
-		<section class="splide alive" aria-label="Splide Basic HTML Example">
-			<div class="splide__track alive">
-				<ul class="splide__list">
-					{% for categorie_animal in categories_animeaux %}
-						<li class="splide__slide">
-							<div class="flex">
-								<h2 class="animal_title">{{ categorie_animal.nom }}</h2>
-								<img class="reduce_image_size" src="{{ categorie_animal.media }}" alt="">
-								<button class="show_modale red" data-show-modal-alive="{{ categorie_animal.id }}">Disponibilités</button>
-							</div>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
+			{# //SLIDER POUR LES ANIMEAUX VIVANTS #}
+			<section class="splide alive" aria-label="Splide Basic HTML Example">
+				<div class="splide__track alive">
+					<ul class="splide__list">
+						{% for categorie_animal in categories_animeaux %}
+							<li class="splide__slide">
+								<div class="flex alive">
+									<h2 class="animal_title">{{ categorie_animal.nom }}</h2>
+									<img class="reduce_image_size" src="{{ categorie_animal.media }}" alt="">
+									<button class="show_modale red" data-show-modal-alive="{{ categorie_animal.id }}">Disponibilités</button>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</section>
 		</section>
 
 		{# MODALE POUR LES ANIMEAUX VIVANTS  #}
@@ -117,11 +151,11 @@
 												<div class="text_modale">
 													<p>
 														<i class="fa-solid fa-angle-right"></i>
-														PRIX :
+														Prix :
 														{{product_alive.prix}}</p>
 													<p>
 														<i class="fa-solid fa-angle-right"></i>
-														DESCRIPTION :
+														Description :
 														{{product_alive.nom}}</p>
 													<p>
 														<i class="fa-solid fa-angle-right"></i>
@@ -163,13 +197,13 @@
 							<h2>{{ product.nom }}</h2>
 							<p>
 								<i class="fa-solid fa-angle-right"></i>
-								<span class="important">PRIX :
-								</span>
+								<strong>Prix :
+								</strong>
 								{{ product.prix }}</p>
 							{% if product.description %}
 								<p>
 									<i class="fa-solid fa-angle-right"></i>
-									<span class="important">DESCRIPTION :</span>
+									<strong>Description :</strong>
 									{{ product.description }}</p>
 							{% endif %}
 							<p>

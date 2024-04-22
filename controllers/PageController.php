@@ -83,4 +83,14 @@ class PageController extends AbstractController
             $this->redirect('index.php');
         }
     }
+
+    public function showMentions(): void
+    {
+        $this->render('pages/mentions.html.twig', []);
+    }
+
+    public function showProtection(): void
+    {
+        $this->render('pages/protection.html.twig', []);
+    }
 }

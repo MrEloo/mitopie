@@ -10,6 +10,7 @@
 
         $twig->addExtension(new \Twig\Extension\DebugExtension());
 
+
         //Ajout de la session pour qu'elle soit facilement accessible avec twig
         $twig->addGlobal('session', $_SESSION);
 
@@ -49,5 +50,25 @@
         } else {
             return null;
         }
+    }
+
+    /**
+     * Get the value of twig
+     */
+    public function getTwig()
+    {
+        return $this->twig;
+    }
+
+    /**
+     * Set the value of twig
+     *
+     * @return  self
+     */
+    public function setTwig($twig)
+    {
+        $this->twig = $twig;
+
+        return $this;
     }
 }

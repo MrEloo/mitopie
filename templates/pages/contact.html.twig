@@ -18,6 +18,7 @@
 	{% endif %}
 
 	<form class="contact_form" action="index.php?route=sendMail" method="POST">
+		<h2>Me contacter</h2>
 		<input type="hidden" name="csrf_token" id="csrf_token" value="{{ session.csrf_token }}"/>
 		<fieldset>
 			<label for="nom">Nom</label>
