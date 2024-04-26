@@ -4,7 +4,6 @@ class UserController extends AbstractController
 {
     public function updateNewsletter(): void
     {
-        echo 'salut';
         $um = new UserManager();
         $um->updateNewsletter($_GET['bool'], $_SESSION['user_id']);
 

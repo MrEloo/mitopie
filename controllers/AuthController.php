@@ -96,7 +96,7 @@ class AuthController extends AbstractController
         if ($tokenManager->validateCSRFToken($_POST["csrf_token"])) {
 
             //Sécurisation des données reçu par le biais du formulaire d'authentification avec le HTMLSPECIALCHARS
-            if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['telephone']) && !empty($_POST['adresse']) && !empty($_POST['code_postal']) && !empty($_POST['ville'])) {
+            if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])) {
 
                 //Sécurisation du mot de passe avec la RegEx
                 if (preg_match($passwordRegex, $_POST['password'])) {
@@ -113,7 +113,7 @@ class AuthController extends AbstractController
                 $confirmPassword = htmlspecialchars($_POST['confirm_password']);
                 $telephone = htmlspecialchars($_POST['telephone']);
                 $adresse = htmlspecialchars($_POST['adresse']);
-                $codePostal = htmlspecialchars($_POST['code_postal']);
+                $codePostal = htmlspecialchars(intval($_POST['code_postal']));
                 $ville = htmlspecialchars($_POST['ville']);
 
                 //vérification que les deux mots de passe sont bien identique
@@ -122,7 +122,7 @@ class AuthController extends AbstractController
 
 
                     //Création d'un nouvel utilisateur et insertion en base de donnée
-                    $newUser = new User($nom, $prenom, $email, $password, $telephone, $adresse, $codePostal, $ville, 0);
+                    $newUser = new User($nom, $prenom, $email, $password, $telephone, $adresse, $codePostal, $ville, 1);
 
                     $userManager->createUser($newUser);
 
